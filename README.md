@@ -1,4 +1,4 @@
-# Pushing original contributor's down to compiled notes here before the Japanese starts on later lines
+# Pushing original contributor's down to compiled notes from the multi-tool posted on a forum, located here when the Japanese starts on later lines...
 # Working on live streaming to multiple platforms specifically on multi-tool usage: 
 ## Guide, Comments, and English translation by me... feel free to ping me here on GitHub @jimbrend with any questions or on X.com @jimsbr currently: [x.com/jimsbr](https://x.com/jimsbr)
 
