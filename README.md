@@ -1,5 +1,5 @@
 # Pushing original contributor's down to compiled notes here before the Japanese starts on later lines
-# Working on live streaming to multiple platform specifically on multi-tool usage: 
+# Working on live streaming to multiple platforms specifically on multi-tool usage: 
 ## Guide, Comments, and English translation by me... feel free to ping me here on GitHub @jimbrend with any questions or on X.com @jimsbr currently: [x.com/jimsbr](https://x.com/jimsbr)
 
 Here's some more info on streaming before diving in:
