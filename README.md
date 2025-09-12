@@ -3,7 +3,9 @@
 ## Guide, Comments, and English translation by me... feel free to ping me here on GitHub @jimbrend with any questions or on X.com @jimsbr currently: [x.com/jimsbr](https://x.com/jimsbr)
 
 Here's some more info on streaming before diving in:
+
 Guide// https://steemit.com/gaming/@jdzy/reducing-stream-choppiness-with-streamlabs-obs-on-twitch
+
 //Also, a video from me about switching or importing between streamlabs/StreamElements/to the easier obs-studio:
 https://youtu.be/P6wUYc7hE08?si=1M03tJonWG4yEMNI
 
