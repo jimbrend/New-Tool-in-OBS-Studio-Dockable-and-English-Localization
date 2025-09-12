@@ -2,6 +2,13 @@
 # Working on live streaming to multiple platform specifically on multi-tool usage: 
 ## Guide, Comments, and English translation by me... feel free to ping me here @jimbrend with any questions
 
+Here's some more info on streaming before diving in:
+Guide// https://steemit.com/gaming/@jdzy/reducing-stream-choppiness-with-streamlabs-obs-on-twitch
+//Also, a video from me about switching or importing between streamlabs/StreamElements/to the easier obs-studio:
+https://youtu.be/P6wUYc7hE08?si=1M03tJonWG4yEMNI
+
+
+# Now here is the localized tool with English installation instructions here for multicasting easy with the multi-tool, so you do not have to use restream or anything else third-party etc. that may be unreliable or cost too much:
 Think I found what is the reliable multi-tool OBS plugin: https://www.youtube.com/watch?v=8m-IQfA_LV8&pp=ygUYbXVsdGkgc3RyZWFtIHR3aXRjaCB0b29s
 
 The YouTube explains the installation... 
