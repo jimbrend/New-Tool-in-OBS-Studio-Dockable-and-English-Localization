@@ -17,7 +17,7 @@ The YouTube explains the installation...
 
 To actually install for an overview and easy step-by-step go here: https://obsproject.com/forum/resources/multiple-rtmp-outputs-plugin.964/
 
-Then click Go to download: 
+To review or [just click download here too](https://github.com/sorayuki/obs-multi-rtmp/releases/): 
 
 ![image](https://github.com/user-attachments/assets/3e51c44e-6379-4150-a54a-61017c2e0a05)
 
