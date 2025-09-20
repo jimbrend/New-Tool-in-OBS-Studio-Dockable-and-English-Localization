@@ -77,8 +77,7 @@ I believe that is where you create a source, I've tested this multiple times now
 i have confirmed this since you can simulcast to X, twitch, and Nostr/zap.stream at once and pop out and monitor all their chats on web 
 
 The reliable multi-tool OBS plugin YouTube video with explanation: https://www.youtube.com/watch?v=8m-IQfA_LV8&pp=ygUYbXVsdGkgc3RyZWFtIHR3aXRjaCB0b29s
-(installation and source in the details: https://obsproject.com/forum/resources/multiple-rtmp-outputs-plugin.964/)
-(curious if anyone uses another one?)
+
 
 If curious too https://zap.stream/ is another new platform you could multi-stream too that has a pretty niche streamer community there, the platform is not too saturated yet which could be a good thing for people streaming there (the new UX has since greatly improved with a new user dashboard, an old coworker created this platform https://git.v0l.io/Kieran), you have to login there with a Nostr pubkey, also if you leak your address or something by accident you can’t delete your Nostr broadcast (you can’t delete Nostr posts they’re hosted on multiple relays/servers, there’s no delete button)  But zap.stream uses AWS servers so I think it expires after 3 months… (Nostr caters to only text connections hosted in a decentralized/uncensored manner on its frontend, but can't store a lot of data so there is also like a streaming music service that uses AWS backend for the music being built on it as well as a ton of other projects, mostly all curated here if interested it is called wav.lake and there is an aggregation of all Nostr apps: https://github.com/aljazceru/awesome-nostr)  
 
@@ -91,6 +90,11 @@ This is also a great interview between Odell and Kieran regarding the Zap.Stream
 
 Nostr user base kind of plateaued (I preface this from a normal/mainstream perspective only because nostr has had periods of growth to 35M users and slumps to what looks like 50k or less MAU from the numbers i can tell) though until maybe another killer app comes along, all the apps for those are interoperable though you login with the same pubkey for your account on all of them - Damus (if you're on Damus you see the same posts from popular users as users browsing on Iris, Amethyst, Snort.social, Astra.ninja interfaces too for the Nostr social feeds) Damus is the biggest one right now a Twitter clone on the App Store… Primal.net has now taken some of its market share it's a bit of an echo chamber for Bitcoin users sometimes vs. a mainstream user but people claim it's less toxic than X and you can't be banned there (a bit of a conundrum).  However, I do find the incentives much better aligned and the relays on Nostr protocol has great potential-- one benefit is if you develop a social app or something similar you immediately connect to the 35 million or so userbase and ~50K MAU and can login to your app and there's no KYC onboarding, IMHO...
 Aggregated list of development on Nostr: https://github.com/aljazceru/awesome-nostr
+
+I have also been working on more tools for X streaming and spaces simultaneously, adding more Twitch functionality as well, for more tools and discovery and if you'd like to assist and make more things like this just get in touch! (My twitch is also currently https://twitch.tv/sabu2077)
+https://x.com/jimsbr/status/1959809161946112247
+https://x.com/jimsbr/status/1959809164902859213
+https://x.com/jimsbr/status/1967298853222387888
 
 
 
