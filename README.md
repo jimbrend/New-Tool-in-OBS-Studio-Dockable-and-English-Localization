@@ -91,9 +91,9 @@ This is also a great interview between Odell and Kieran regarding the Zap.Stream
 Nostr user base kind of plateaued (I preface this from a normal/mainstream perspective only because nostr has had periods of growth to 35M users and slumps to what looks like 50k or less MAU from the numbers i can tell) though until maybe another killer app comes along, all the apps for those are interoperable though you login with the same pubkey for your account on all of them - Damus (if you're on Damus you see the same posts from popular users as users browsing on Iris, Amethyst, Snort.social, Astra.ninja interfaces too for the Nostr social feeds) Damus is the biggest one right now a Twitter clone on the App Store… Primal.net has now taken some of its market share it's a bit of an echo chamber for Bitcoin users sometimes vs. a mainstream user but people claim it's less toxic than X and you can't be banned there (a bit of a conundrum).  However, I do find the incentives much better aligned and the relays on Nostr protocol has great potential-- one benefit is if you develop a social app or something similar you immediately connect to the 35 million or so userbase and ~50K MAU and can login to your app and there's no KYC onboarding, IMHO...
 Aggregated list of development on Nostr: https://github.com/aljazceru/awesome-nostr
 
-I have also been working on more tools for X streaming and spaces simultaneously, adding more Twitch functionality as well, for more tools and discovery and if you'd like to assist and make more things like this just get in touch! (My twitch is also currently https://twitch.tv/sabu2077)
-https://x.com/jimsbr/status/1959809161946112247
-https://x.com/jimsbr/status/1959809164902859213
+I have also been working on more tools for X streaming and spaces simultaneously, adding more Twitch functionality as well, for more tools and discovery and if you'd like to assist and make more things like this just get in touch! (My twitch is also currently https://twitch.tv/sabu2077)<br>
+https://x.com/jimsbr/status/1959809161946112247<br>
+https://x.com/jimsbr/status/1959809164902859213<br>
 https://x.com/jimsbr/status/1967298853222387888
 
 
