@@ -68,7 +68,7 @@ More comments on this process below with background details...
 (installation and source in the details: https://obsproject.com/forum/resources/multiple-rtmp-outputs-plugin.964/)
 (curious if anyone uses another one?)
 
-Elon tweeted steps here a while ago and streamed 3 times since this post and a few times since as well, this has gotten much better and many people are now streaming more often and it displays and is easily clickable on their avatar (luckily he was able to fix his audio problem he sounded like a chipmunk and was getting echo on the first one lol): https://x.com/marmars/status/1708195875510796673?s=20
+This is now just more background on streaming, the rise of more live/game streaming on X and Zap.Stream:  Elon tweeted steps here a while ago and streamed 3 times since this post and a few times since as well, this has gotten much better and many people are now streaming more often and it displays and is easily clickable on their avatar (luckily he was able to fix his audio problem he sounded like a chipmunk and was getting echo on the first one lol): https://x.com/marmars/status/1708195875510796673?s=20
 
 I tried testing it once but I guess it uses the periscope backend, I think it's hard to connect and interact with a streamer/support them as there's no like easy way to subscribe/tip/bits etc. like easily in one about section and things now so feels like it's disjointed but definitely, X has potential: https://studio.twitter.com/producer/sources
 
