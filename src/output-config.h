@@ -19,12 +19,18 @@ struct VideoEncoderConfig {
 };
 using VideoEncoderConfigPtr = std::shared_ptr<VideoEncoderConfig>;
 
+struct AudioTrackConfig {
+    int mixer_track;
+    int output_track;
+};
+using AudioTrackConfigPtr = std::shared_ptr<AudioTrackConfig>;
 
 struct AudioEncoderConfig {
     std::string id;
     std::string encoderId;
     nlohmann::json encoderParams;
     int mixerId = 0;
+    std::list<AudioTrackConfigPtr> audioTracks;
 };
 using AudioEncoderConfigPtr = std::shared_ptr<AudioEncoderConfig>; 
 
@@ -32,6 +38,7 @@ using AudioEncoderConfigPtr = std::shared_ptr<AudioEncoderConfig>;
 struct OutputTargetConfig {
     std::string id;
     std::string name;
+    std::string protocol;
     bool syncStart = false;
     bool syncStop = false;
 
@@ -66,7 +73,5 @@ MultiOutputConfig& GlobalMultiOutputConfig();
 void SaveMultiOutputConfig();
 
 bool LoadMultiOutputConfig();
-
-void ImportLegacyMultiOutputConfig();
 
 std::string GenerateId(MultiOutputConfig& config);

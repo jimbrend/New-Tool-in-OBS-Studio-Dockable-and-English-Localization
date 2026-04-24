@@ -1,4 +1,4 @@
-﻿#include "obs-properties-widget.h"
+#include "obs-properties-widget.h"
 #include "obs.hpp"
 
 #include "json.hpp"
@@ -53,7 +53,11 @@ namespace {
                 edit_->setEchoMode(QLineEdit::EchoMode::Password);
                 layout->addWidget(eye_ = new QCheckBox(u8"👀", this));
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+                QObject::connect(eye_, &QCheckBox::checkStateChanged, [=](Qt::CheckState newstate) {
+#else
                 QObject::connect(eye_, &QCheckBox::stateChanged, [=](int newstate) {
+#endif
                     if (newstate == Qt::CheckState::Checked) {
                         edit_->setEchoMode(QLineEdit::EchoMode::Normal);
                     } else {
@@ -92,7 +96,11 @@ namespace {
             switch(propType = obs_property_get_type(p)) {
                 case OBS_PROPERTY_BOOL: {
                     auto cb = new QCheckBox(parent);
-                    QObject::connect(cb, &QCheckBox::stateChanged, [=]() {
+#if QT_VERSION >= QT_VERSION_CHECK(6, 7, 0)
+                    QObject::connect(cb, &QCheckBox::checkStateChanged, [=](Qt::CheckState) {
+#else
+                    QObject::connect(cb, &QCheckBox::stateChanged, [=](int) {
+#endif
                         updater->UpdateUI();
                     });
                     ctrl = cb;
@@ -120,19 +128,6 @@ namespace {
                 }
                 case OBS_PROPERTY_LIST: {
                     auto cb = new QComboBox(parent);
-                    cbType = obs_property_list_format(p);
-                    auto cnt = obs_property_list_item_count(p);
-                    for(auto i = 0; i < cnt; ++i) {
-                        auto itemname = obs_property_list_item_name(p, i);
-                        QVariant data;
-                        if (cbType == obs_combo_format::OBS_COMBO_FORMAT_INT)
-                            data = obs_property_list_item_int(p, i);
-                        else if (cbType == obs_combo_format::OBS_COMBO_FORMAT_FLOAT)
-                            data = obs_property_list_item_float(p, i);
-                        else if (cbType == obs_combo_format::OBS_COMBO_FORMAT_STRING)
-                            data = LoadCString(obs_property_list_item_string(p, i));
-                        cb->addItem(LoadCString(itemname), data);
-                    }
                     QObject::connect(cb, &QComboBox::currentIndexChanged, [=]() {
                         updater->UpdateUI();
                     });
@@ -151,13 +146,43 @@ namespace {
             QObject::connect(ctrl, &QObject::destroyed, [this]() {
                 ctrl = nullptr;
             });
+
+            ReloadProperty(p);
         }
 
         ~PropertyWidget() {
-            if (label) 
+            if (label)
                 delete label;
-            if (ctrl) 
+            if (ctrl)
                 delete ctrl;
+        }
+
+        void ReloadProperty(obs_property* p) {
+            if (obs_property_get_type(p) == propType) {
+                switch(propType) {
+                    case OBS_PROPERTY_LIST: {
+                        auto cb = static_cast<QComboBox*>(ctrl);
+                        for(int i = cb->count() - 1; i >= 0; --i)
+                            cb->removeItem(i);
+                        cbType = obs_property_list_format(p);
+                        auto cnt = obs_property_list_item_count(p);
+                        for(size_t i = 0; i < cnt; ++i) {
+                            auto itemname = obs_property_list_item_name(p, i);
+                            QVariant data;
+                            if (cbType == obs_combo_format::OBS_COMBO_FORMAT_INT)
+                                data = obs_property_list_item_int(p, i);
+                            else if (cbType == obs_combo_format::OBS_COMBO_FORMAT_FLOAT)
+                                data = obs_property_list_item_float(p, i);
+                            else if (cbType == obs_combo_format::OBS_COMBO_FORMAT_STRING)
+                                data = LoadCString(obs_property_list_item_string(p, i));
+                            cb->addItem(LoadCString(itemname), data);
+                        }
+                    }
+                    default:
+                        blog(LOG_WARNING, "ReloadProperty did not handle property of type %d", propType);
+                        break;
+                }
+            }
         }
 
         void LoadData(obs_data* data) {
@@ -202,6 +227,9 @@ namespace {
                 }
                 break;
             }
+            default:
+                blog(LOG_ERROR, "Unsupported property type %d", propType);
+                break;
             }
         }
 
@@ -250,6 +278,9 @@ namespace {
                 }
                 break;
             }
+            default:
+                blog(LOG_ERROR, "Unsupported property type %d", propType);
+                break;
             }
         }
     };
@@ -260,6 +291,7 @@ namespace {
         obs_properties* props;
         OBSData settings;
         OBSData orig_settings;
+        std::function<void()> geometryChangeCallback_;
 
     public:
         QPropertiesWidgetImpl(obs_properties* props, obs_data* p_settings, QWidget* parent)
@@ -278,6 +310,8 @@ namespace {
             obs_data_release(defs);
 
             obs_data_apply(settings, orig_settings);
+
+            obs_properties_apply_settings(props, settings);
             
             UpdateUI();
         }
@@ -286,6 +320,10 @@ namespace {
         {
             if (props)
                 obs_properties_destroy(props);
+        }
+
+        void SetGeometryChangeCallback(std::function<void()> callback) override {
+            geometryChangeCallback_ = std::move(callback);
         }
 
         void LoadProperties() {
@@ -306,6 +344,7 @@ namespace {
             layout->setColumnStretch(0, 0);
             layout->setColumnStretch(1, 1);
             layout->setContentsMargins(0, 0, 0, 0);
+            layout->setSizeConstraint(QLayout::SetMinAndMaxSize);
             auto x = obs_properties_first(props);
             int currow = 0;
             do {
@@ -316,10 +355,13 @@ namespace {
                 auto it = oldpropwids.find(name);
                 if (it == oldpropwids.end()) {
                     auto newwid = std::make_shared<PropertyWidget>(this, this, x);
+                    newwid->LoadData(settings);
                     propwids.insert(std::make_pair(newwid->name, newwid));
                     layout->addWidget(newwid->label, currow, 0);
                     layout->addWidget(newwid->ctrl, currow, 1);
                 } else {
+                    it->second->ReloadProperty(x);
+                    it->second->LoadData(settings);
                     propwids.insert(std::make_pair(it->first, it->second));
                     layout->addWidget(it->second->label, currow, 0);
                     layout->addWidget(it->second->ctrl, currow, 1);
@@ -330,6 +372,7 @@ namespace {
             if (oldLayout)
                 delete oldLayout;
             setLayout(layout);
+            NotifyGeometryChanged();
         }
 
         bool isUpdating = false;
@@ -356,6 +399,14 @@ namespace {
 
         void Save() {
             obs_data_apply(orig_settings, settings);
+        }
+
+    private:
+        void NotifyGeometryChanged() {
+            updateGeometry();
+            adjustSize();
+            if (geometryChangeCallback_)
+                geometryChangeCallback_();
         }
     };
 };
