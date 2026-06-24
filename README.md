@@ -9,6 +9,9 @@ Guide// https://steemit.com/gaming/@jdzy/reducing-stream-choppiness-with-streaml
 //Also, a video from me about switching or importing between streamlabs/StreamElements/to the easier obs-studio:
 https://youtu.be/P6wUYc7hE08?si=1M03tJonWG4yEMNI
 
+I'm currently working on packaging this with a new way to receive tips/donos at 100% with no fee with new auth:
+https://www.highermark.xyz/dono
+and packaging it with this or will release it with a few other bespoke features and still honor the MIT license as shared at the bottom of that page and will update soon...
 
 # Now here is the localized tool with English installation instructions here for multicasting easy with the multi-tool, so you do not have to use restream or anything else third-party etc. that may be unreliable or cost too much:
 Think I found what is the reliable multi-tool OBS plugin: https://www.youtube.com/watch?v=8m-IQfA_LV8&pp=ygUYbXVsdGkgc3RyZWFtIHR3aXRjaCB0b29s
